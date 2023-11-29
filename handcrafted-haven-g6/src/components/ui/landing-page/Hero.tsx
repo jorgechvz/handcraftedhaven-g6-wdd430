@@ -73,7 +73,7 @@ export default function Hero() {
               </div>
 
               <Link
-                href="/"
+                href="/auth/register"
                 className="inline-block rounded-md border border-transparent bg-Kilamanjaro-950 px-8 py-3 text-center font-medium text-silverSand-50 hover:bg-silverSand-50 hover:text-Kilamanjaro-950"
               >
                 Join the Haven

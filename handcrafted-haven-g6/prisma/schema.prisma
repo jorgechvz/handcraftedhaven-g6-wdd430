@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+}
+
+enum RoleType {
+  ADMIN
+  CLIENT
+  VENDOR
+}
+
+model User {
+  id           String    @id @default(cuid())
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  name         String
+  email        String    @unique
+  password     String    
+  imageProfile String?
+  role         RoleType  @default(CLIENT)
+  isAdmin      Boolean   @default(false)
+  products     Product[]
+  reviews      Review[] 
+  carts        Cart[]
+}
+
+model Product {
+  id          String     @id @default(cuid())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  name        String
+  description String?
+  image       String?
+  quantity    Int
+  category    Category[]
+  price       Float
+  user        User       @relation(fields: [userId], references: [id])
+  userId      String
+  reviews     Review[]
+  cartItems   CartItem[]
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String
+  products Product[]
+}
+
+model Review {
+  id        String  @id @default(cuid())
+  rating    Int
+  comment   String?
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  user      User       @relation(fields: [userId], references: [id])
+  userId    String
+  cartItems CartItem[]
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  cart      Cart     @relation(fields: [cartId], references: [id])
+  cartId    String
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String
+  quantity  Int
+}
