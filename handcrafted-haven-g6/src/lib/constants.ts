@@ -40,12 +40,6 @@ export const profileNavigation = [
     name: "Settings",
     key: "settings",
     href: "/settings",
-    current: false,
-  },
-  {
-    name: "Logout",
-    key: "logout",
-    href: "/logout",
   },
 ];
 

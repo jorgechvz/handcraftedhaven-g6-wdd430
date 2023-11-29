@@ -1,21 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import { Disclosure } from "@headlessui/react";
-import {
-  Bars3Icon,
-  BellIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import classNames, { navigation } from "@/lib/constants";
 import Link from "next/link";
 import LoginSignUpButton from "./LoginSignUpDropdown";
 import ProfileButton from "./ProfileDropdown";
 import Image from "next/image";
-
+import { getSession, useSession } from "next-auth/react";
 
 export default function Navbar() {
-  const [isLogged, setIsLogged] = useState(true);
+  const { data: session } = useSession();
+
+  const isSessionActive = session?.user?.name ? true : false;
 
   return (
     <Disclosure as="nav" className="bg-kumera-600 fixed top-0 w-full z-50">
@@ -77,11 +74,7 @@ export default function Navbar() {
                 </button>
 
                 {/* Profile/LoginSignUp dropdown */}
-                {isLogged == true ? (
-                  <ProfileButton />
-                ) : (
-                  <LoginSignUpButton />
-                )}
+                {!isSessionActive ? <LoginSignUpButton /> : <ProfileButton />}
               </div>
             </div>
           </div>

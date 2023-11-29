@@ -1,5 +1,3 @@
-import Image from 'next/image'
-import styles from './page.module.css'
 import Hero from '@/components/ui/landing-page/Hero'
 import Collections from '@/components/ui/landing-page/Collections'
 import Stats from '@/components/ui/landing-page/Stats'

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 
-export default function loginSignUpDropdown() {
+export default function LoginSignUpDropdown() {
   return (
     <Menu as="div" className="relative ml-3" key="loginSignUpDropdown">
       <div>
@@ -29,7 +29,7 @@ export default function loginSignUpDropdown() {
             {({ active }) => (
               <Link
                 key="login"                
-                href="/login"
+                href="/auth/login"
                 className={classNames(
                   active ? "bg-kumera-700 rounded-md" : "",
                   "block px-4 py-2 text-sm text-silverSand-50"
@@ -43,7 +43,7 @@ export default function loginSignUpDropdown() {
             {({ active }) => (
               <Link
                 key="signup"  
-                href="/signup"
+                href="/auth/register"
                 className={classNames(
                   active ? "bg-kumera-700 rounded-md" : "",
                   "block px-4 py-2 text-sm text-silverSand-50"
