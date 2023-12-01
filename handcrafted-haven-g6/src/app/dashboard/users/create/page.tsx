@@ -1,13 +1,13 @@
-import CreateUserForm from '@/components/ui/auth/RegisterForm';
+import UserForm from '@/components/ui/dashboard/users/CreateUser';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Sign Up',
+  title: 'Create User | Dashboard Admin',
 };
 
 export default function Page() {
 
   return (
-    <CreateUserForm />
+    <UserForm/>
   );
 }

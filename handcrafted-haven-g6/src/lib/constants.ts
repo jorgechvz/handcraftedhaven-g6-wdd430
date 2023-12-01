@@ -236,3 +236,87 @@ export const contact = [
   { label: "+1 (123) 456-7890" },
   { label: "123 Main St, Cityville" },
 ];
+
+/* ------------------- Dashboard ---------------- */
+/* Cards */
+export const cards = [
+  {
+    id: 1,
+    title: "Total Users",
+    number: 10.928,
+    change: 12,
+  },
+  {
+    id: 2,
+    title: "Stock",
+    number: 8.236,
+    change: -2,
+  },
+  {
+    id: 3,
+    title: "Revenue",
+    number: 6.642,
+    change: 18,
+  },
+];
+
+/* Transactions */
+
+export const transactionsData = [
+  {
+    id: 1,
+    name: "John Doe",
+    status: "Pending",
+    date: "2021-06-01",
+    price: "$3200.00",
+  },
+  {
+    id: 2,
+    name: "Mary Jane",
+    status: "Cancelled",
+    date: "2021-06-01",
+    price: "$3200.00",
+  },
+  {
+    id: 3,
+    name: "Katie Smith",
+    status: "Success",
+    date: "2021-06-01",
+    price: "$3200.00",
+  },
+  {
+    id: 4,
+    name: "Oliver Smith",
+    status: "Success",
+    date: "2021-06-01",
+    price: "$3200.00",
+  },
+  {
+    id: 5,
+    name: "William Owens",
+    status: "Success",
+    date: "2021-06-01",
+    price: "$3200.00",
+  },
+  /*{
+    id: 6,
+    name: 'Nancy Jones',
+    status: 'Cancelled',
+    date: '2021-06-01',
+    price: '$3200.00'
+  },
+  {
+    id: 7,
+    name: 'Eva Kowalski',
+    status: 'Pending',
+    date: '2021-06-01',
+    price: '$3200.00'
+  },
+  {
+    id: 8,
+    name: 'Xavier Carter',
+    status: 'Cancelled',
+    date: '2021-06-01',
+    price: '$3200.00'
+  }, */
+];

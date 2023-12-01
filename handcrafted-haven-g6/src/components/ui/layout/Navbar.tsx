@@ -36,7 +36,7 @@ export default function Navbar() {
                 <Link href="/" className="flex flex-shrink-0 items-center">
                   <Image
                     className="h-[35px] lg:h-[45px] w-auto"
-                    src="handcrafted-logo.svg"
+                    src="/handcrafted-logo.svg"
                     alt="Your Company"
                     width={80}
                     height={40}
