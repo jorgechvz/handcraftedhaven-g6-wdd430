@@ -11,7 +11,7 @@ export default function Footer() {
   const time = new Date().getFullYear();
 
   return (
-    <div className="bg-kumera-600 mt-36">
+    <div className="bg-kumera-600 mt-3">
       <div className="max-w-7xl m-auto px-4 divide-y">
         <div className="flex flex-col py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
           <div className="lg:w-1/3">
@@ -22,7 +22,7 @@ export default function Footer() {
               >
                 <Image
                   className="h-auto w-auto"
-                  src="handcrafted-logo.svg"
+                  src="/handcrafted-logo.svg"
                   alt="Your Company"
                   width={120}
                   height={60}

@@ -1,20 +1,18 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import classNames, { profileNavigation } from "@/lib/constants";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { signOut } from "next-auth/react";
-import { usePathname, redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
+import { usePathname } from "next/navigation";
 
 export default function ProfileDropdown() {
   const pathname = usePathname();
   const handleSignOut = () => {
-    signOut({ callbackUrl: pathname});
-    redirect(pathname);
-  }
-  
+    signOut({ callbackUrl: pathname.includes("dashboard") ? "/" : pathname });
+  };
+
   return (
     <Menu as="div" className="relative ml-3" key="Profile Dropdown">
       <div>
@@ -58,7 +56,7 @@ export default function ProfileDropdown() {
               <button
                 className={classNames(
                   active ? "bg-kumera-700 rounded-md" : "",
-                  "block px-4 py-2 text-sm text-silverSand-50 cursor-pointer"
+                  "block px-4 py-2 text-sm text-silverSand-50 w-full text-left cursor-pointer"
                 )}
                 key="signup"
                 onClick={handleSignOut}

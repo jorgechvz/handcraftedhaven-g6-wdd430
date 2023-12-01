@@ -1,8 +1,11 @@
+import { RoleType } from "@prisma/client";
+
 export type UserType = {
   id: string;
   name: string;
   email: string;
   password: string;
+  role: RoleType;
 };
 
 export type Product = {
