@@ -1,6 +1,6 @@
 import { Divider } from "@nextui-org/react";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { fetchUserByEmail } from "@/lib/data";
 import EditInfoForm from "@/components/ui/profile/EditInfoForm";
 import EditEmailForm from "@/components/ui/profile/EditEmailForm";

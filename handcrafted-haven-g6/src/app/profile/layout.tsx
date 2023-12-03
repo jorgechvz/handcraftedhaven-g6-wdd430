@@ -1,9 +1,3 @@
-import Sidebar from "@/components/ui/dashboard/sidebar/Sidebar";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
-import { fetchUserByEmail } from "@/lib/data";
-import { RoleType } from "@prisma/client";
-import Link from "next/link";
 import SidebarAccount from "@/components/ui/profile/SidebarAccount";
 import AccountHeader from "@/components/ui/profile/HeaderProfile";
 

@@ -1,5 +1,6 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
 import FormAddReview from "@/components/ui/products/FormAddReview";
+import { authOptions } from "@/lib/auth";
 import { fetchUserByEmail } from "@/lib/data";
 import { getServerSession } from "next-auth";
 

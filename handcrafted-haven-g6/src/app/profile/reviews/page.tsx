@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import MyReviews from "@/components/ui/profile/MyReviews";
 import { fetchReviewsByUserId, fetchUserByEmail } from "@/lib/data";
 import { getServerSession } from "next-auth";

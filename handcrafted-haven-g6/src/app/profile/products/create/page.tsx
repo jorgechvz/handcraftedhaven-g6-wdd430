@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import CreateProduct from "@/components/ui/profile/CreateProduct";
 import { fetchCategories, fetchUserByEmail } from "@/lib/data";
 import { Metadata } from "next";
