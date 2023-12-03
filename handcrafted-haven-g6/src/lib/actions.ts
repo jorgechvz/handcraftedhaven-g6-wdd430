@@ -638,8 +638,8 @@ export async function CreateReviewAction(prevState: ReviewState, formData: FormD
     };
   }
 
-  revalidatePath("/products/reviews/");
-  redirect("/products/reviews/");
+  revalidatePath(`/products/${formData.get("productId") as string}`);
+  redirect(`/products/${formData.get("productId") as string}`);
 }
 
 /* Update a Review */

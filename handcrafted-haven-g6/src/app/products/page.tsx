@@ -40,7 +40,7 @@ const ProductosPage: React.FC = () => {
     <div className="bg-silverSand-50 mt-[75px] pb-[75px]">
       <div className="min-h-screen max-w-7xl m-auto p-8">
         <header className="mb-8">
-          <h1 className="text-4xl font-bold text-Kilamanjaro-950">Productos</h1>
+          <h1 className="text-4xl font-bold text-Kilamanjaro-950">Products</h1>
         </header>
 
         <div className="mb-4">
