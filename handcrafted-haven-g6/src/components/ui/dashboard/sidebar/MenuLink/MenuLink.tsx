@@ -13,7 +13,7 @@ const MenuLink = ({ item }: { item: any }) => {
         pathname === item.path ? "bg-silverSand-50 text-silverSand-950" : ""
       }`}
     >
-      {item.icon}
+      <p className="text-[32px]">{item.icon}</p>
       {item.title}
     </Link>
   );

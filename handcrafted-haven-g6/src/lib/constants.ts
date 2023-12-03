@@ -36,11 +36,6 @@ export const profileNavigation = [
     key: "profile",
     href: "/profile",
   },
-  {
-    name: "Settings",
-    key: "settings",
-    href: "/settings",
-  },
 ];
 
 /* Hero Const */

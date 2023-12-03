@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("POSTGRES_PRISMA_URL")
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING") // For migrations & seeding
 }
 
 enum RoleType {
@@ -22,12 +23,12 @@ model User {
   updatedAt    DateTime  @updatedAt
   name         String
   email        String    @unique
-  password     String    
+  password     String
   imageProfile String?
   role         RoleType  @default(CLIENT)
   isAdmin      Boolean   @default(false)
   products     Product[]
-  reviews      Review[] 
+  reviews      Review[]
   carts        Cart[]
 }
 
@@ -48,14 +49,16 @@ model Product {
 }
 
 model Category {
-  id    Int    @id @default(autoincrement())
-  name  String
+  id       Int       @id @default(autoincrement())
+  name     String
   products Product[]
 }
 
 model Review {
   id        String  @id @default(cuid())
-  rating    Int
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  rating    Float
   comment   String?
   user      User    @relation(fields: [userId], references: [id])
   userId    String

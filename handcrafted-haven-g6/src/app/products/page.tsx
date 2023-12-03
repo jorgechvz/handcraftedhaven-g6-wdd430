@@ -1,55 +1,72 @@
-// import React, { useState, useEffect } from 'react';
-// import ProductList from '@/components/productList';
-// import ProductFilter from '@/components/productFilter';
+"use client";
+import { useState, useEffect } from "react";
+import Product from "@/components/ui/products/product";
+import { fetchProducts } from "@/lib/data";
 
-// interface ProductPageProps {}
-// // 
-// const ProductPage: React.FC<ProductPageProps> = () => {
-//   const [products, setProducts] = useState<{
-//     id: number;
-//     name: string;
-//     description: string;
-//     image: string;
-//     price: number;
-//   }[]>([]);
-//   const [filteredProducts, setFilteredProducts] = useState<{
-//     id: number;
-//     name: string;
-//     description: string;
-//     image: string;
-//     price: number;
-//   }[]>([]);
-//   const [categories, setCategories] = useState<string[]>([]);
-//   const [selectedCategory, setSelectedCategory] = useState<string>('');
+interface ProductoData {
+  id: string;
+  name: string;
+  price: number;
+  image: string | null;
+  description: string | null;
+}
 
-//   useEffect(() => {
-   
-//     const fetchedProducts = /* API call to fetch products */;
-//     const fetchedCategories = /* API call to fetch categories */;
+const ProductosPage: React.FC = () => {
+  const [productos, setProductos] = useState<ProductoData[]>([]);
+  const [filtroNombre, setFiltroNombre] = useState<string>("");
 
-//     setProducts(fetchedProducts);
-//     setFilteredProducts(fetchedProducts);
-//     setCategories(fetchedCategories);
-//   }, []);
+  useEffect(() => {
+    const obtenerProductos = async () => {
+      try {
+        const productosData: ProductoData[] = await fetchProducts();
+        setProductos(productosData);
+      } catch (error: any) {
+        console.error("Error to fetch the products", error.message);
+      }
+    };
 
-//   const handleFilterChange = (category: string) => {
-//     setSelectedCategory(category);
+    obtenerProductos();
+  }, []);
 
-//     if (category === '') {
-//       setFilteredProducts(products);
-//     } else {
-//       const filtered = products.filter((product) => product.category === category);
-//       setFilteredProducts(filtered);
-//     }
-//   };
+  const handleFiltroChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFiltroNombre(event.target.value);
+  };
 
-//   return (
-//     <div className="product-page">
-//       <h2>Handcrafted Treasures</h2>
-//       <ProductFilter categories={categories} handleFilterChange={handleFilterChange} />
-//       <ProductList products={filteredProducts} />
-//     </div>
-//   );
-// };
+  const productosFiltrados = productos.filter((producto) =>
+    producto.name.toLowerCase().includes(filtroNombre.toLowerCase())
+  );
 
-// export default ProductPage;
+  return (
+    <div className="bg-silverSand-50 mt-[75px] pb-[75px]">
+      <div className="min-h-screen max-w-7xl m-auto p-8">
+        <header className="mb-8">
+          <h1 className="text-4xl font-bold text-Kilamanjaro-950">Productos</h1>
+        </header>
+
+        <div className="mb-4">
+          <label
+            htmlFor="filtroNombre"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Filter by name:
+          </label>
+          <input
+            type="text"
+            id="filtroNombre"
+            value={filtroNombre}
+            onChange={handleFiltroChange}
+            className="mt-1 p-2 border rounded-md w-full"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {productosFiltrados.map((producto) => (
+            <Product key={producto.id} {...producto} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductosPage;

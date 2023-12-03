@@ -1,3 +1,5 @@
+"use client"
+
 import { useForm } from "react-hook-form";
 import { SignInResponse, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -28,7 +30,7 @@ export default function LoginForm() {
       setError(res.error);
       reset();
     } else {
-      router.push("/dashboard");
+      router.back();
       router.refresh();
     }
   });

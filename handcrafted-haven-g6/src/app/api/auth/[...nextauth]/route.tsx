@@ -2,17 +2,23 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import db from "@/lib/db";
 import bcrypt from "bcryptjs";
-import { UserType } from "@/lib/types";
+import { UserSession } from "@/lib/types";
 import { z } from "zod";
 
-async function getUser(email: string): Promise<UserType | null> {
+async function getUser(email: string): Promise<UserSession | null> {
   try {
     const userFound = await db.user.findUnique({
       where: {
         email: email,
       },
     });
-    return userFound;
+    return {
+      id: userFound?.id as string,
+      name: userFound?.name as string,
+      email: userFound?.email as string,
+      password: userFound?.password as string,
+      image: userFound?.imageProfile as string,
+    };
   } catch (error) {
     console.error("Failed to fetch user:", error);
     throw new Error("Failed to fetch user.");
@@ -37,7 +43,7 @@ export const authOptions = {
           const { email, password } = parsedCredentials.data;
 
           const user = await getUser(email);
-          if (!user) throw new Error('No user found');
+          if (!user || user.password === undefined) throw new Error('No user found');
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
           if (!passwordsMatch) throw new Error('Wrong password')

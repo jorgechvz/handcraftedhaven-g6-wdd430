@@ -11,7 +11,7 @@ export default function Footer() {
   const time = new Date().getFullYear();
 
   return (
-    <div className="bg-kumera-600 mt-3">
+    <div className="bg-kumera-600">
       <div className="max-w-7xl m-auto px-4 divide-y">
         <div className="flex flex-col py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
           <div className="lg:w-1/3">

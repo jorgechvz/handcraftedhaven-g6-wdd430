@@ -13,7 +13,8 @@ export default function Navbar() {
   const { data: session } = useSession();
 
   const isSessionActive = session?.user?.name ? true : false;
-
+  const imageUrl = session?.user?.image ||"/no-profile-image.jpg";
+  
   return (
     <Disclosure as="nav" className="bg-kumera-600 fixed top-0 w-full z-50">
       {({ open }) => (
@@ -74,7 +75,7 @@ export default function Navbar() {
                 </button>
 
                 {/* Profile/LoginSignUp dropdown */}
-                {!isSessionActive ? <LoginSignUpButton /> : <ProfileButton />}
+                {!isSessionActive ? <LoginSignUpButton /> : <ProfileButton imageUrl={imageUrl} />}
               </div>
             </div>
           </div>

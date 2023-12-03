@@ -1,5 +1,11 @@
 import UserId from "@/components/ui/dashboard/users/UserById";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "User Detail - Handcrafted Haven",
+};
+
 export default function Page({ params }: { params: { id: string } }) {
   return (
     <div>
