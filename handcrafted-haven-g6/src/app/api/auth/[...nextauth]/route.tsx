@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import db from "@/lib/db";
 import bcrypt from "bcryptjs";
@@ -25,7 +25,7 @@ async function getUser(email: string): Promise<UserSession | null> {
   }
 }
 
-export const authOptions = {
+export const authOptions: NextAuthOptions  = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
