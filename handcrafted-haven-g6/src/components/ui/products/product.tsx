@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface ProductoProps {
@@ -11,7 +12,7 @@ interface ProductoProps {
 const Product: React.FC<ProductoProps> = ({ id, name, price, image, description }) => {
   return (
     <div>
-      <img src={image || '/placeholder-image.png'} alt={name} />
+      <Image src={image || '/placeholder-image.png'} alt={name} />
       <h3>{name}</h3>
       <p>{description}</p>
       <p className='mb-5'>Price: ${price}</p>

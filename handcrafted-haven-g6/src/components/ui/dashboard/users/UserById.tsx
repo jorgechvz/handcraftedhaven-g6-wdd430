@@ -1,4 +1,5 @@
 import { fetchUserById } from "@/lib/data";
+import Image from "next/image";
 
 export default async function UserId({userId}: {userId: string}) {
     const user = await fetchUserById(userId);
@@ -10,7 +11,7 @@ export default async function UserId({userId}: {userId: string}) {
         <div>
             <h2>{name}</h2>
             <p>{email}</p>
-            <img src={ imageProfile|| ''} alt={name} />
+            <Image src={ imageProfile|| ''} alt={name || "Image Profile"} />
         </div>
     );
 }
