@@ -52,7 +52,9 @@ export default function CreateUserForm() {
                 required
               />
             </div>
-            {state.message && <div className="text-Kilamanjaro-800">{state.message}</div>}
+            {state.message && (
+              <div className="text-Kilamanjaro-800">{state.message}</div>
+            )}
           </div>
           <div>
             <label

@@ -1,5 +1,3 @@
-'use client'
-
 import Image from "next/image";
 
 import {
@@ -15,7 +13,6 @@ import {
   MdLogout,
 } from "react-icons/md";
 import MenuLink from "./MenuLink/MenuLink";
-import { useSession } from "next-auth/react";
 
 const menuDashboardItems = [
   {
@@ -80,21 +77,20 @@ const menuDashboardItems = [
   },
 ];
 
-const Sidebar = () => {
-  const { data: session } = useSession();
+const Sidebar = ({userName, imageUrl} : {userName: string, imageUrl: string }) => {
   
   return (
     <div className="sticky pl-4">
       <div className="flex items-center gap-5 mb-5 mt-5">
         <Image
           className="border rounded-full flex-col"
-          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          src={imageUrl}
           alt="Avatar Image"
           width="50"
           height="50"
         />
         <div className="flex flex-col">
-          <span className="font-bold">{session ? session.user?.name : 'User Name'}</span>
+          <span className="font-bold">{userName}</span>
           <span className="text-sm text-Kilamanjaro-950">Administrator</span>
         </div>
       </div>

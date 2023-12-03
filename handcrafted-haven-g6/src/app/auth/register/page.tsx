@@ -2,7 +2,7 @@ import CreateUserForm from '@/components/ui/auth/RegisterForm';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Sign Up',
+  title: 'Register - Handcrafted Haven',
 };
 
 export default function Page() {
